@@ -77,6 +77,11 @@ export interface CardsProps {
   isError: boolean;
   data: ServerResponse<Users> | undefined;
 }
+//TODO : inhance this
+export interface SearchProps {
+  handleChange: (event: any) => any;
+  searchTerm: searchParams;
+}
 
 //TODO : inhance this
 export interface PaginationProps {
