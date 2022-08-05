@@ -1,3 +1,5 @@
+import React from "react";
+
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,6 +12,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { UserCartProps } from "../../types/types";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import { Box, CardActionArea } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const UserCard = ({ user }: UserCartProps) => {
   const {
@@ -34,45 +37,49 @@ const UserCard = ({ user }: UserCartProps) => {
   const repos = user.repos_url;
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea>
-        <CardMedia component="img" alt="green iguana" height="150" image={avatar_url} />
-      </CardActionArea>
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {loginName}
-        </Typography>
-        <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <PeopleAltIcon />
-          <Typography variant="body2" color="text.secondary">
-            followers {followers}
+    <React.Fragment>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardActionArea>
+          <CardMedia component="img" alt="green iguana" height="150" image={avatar_url} />
+        </CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {loginName}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            following {following}
-          </Typography>
-        </Box>
+          <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            <PeopleAltIcon />
+            <Typography variant="body2" color="text.secondary">
+              followers {followers}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              following {following}
+            </Typography>
+          </Box>
 
-        <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <GitHubIcon />
-          <Typography variant="body2" color="text.secondary">
-            Repos: {reposCount}
-          </Typography>
-        </Box>
-        <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
-          <AttachFileOutlinedIcon />
-          <Typography variant="body2" color="text.secondary">
-            <a href={githubLink} target="_blank" rel="noreferrer">
-              {githubLink}
-            </a>
-          </Typography>
-        </Box>
-      </CardContent>
+          <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            <GitHubIcon />
+            <Typography variant="body2" color="text.secondary">
+              Repos: {reposCount}
+            </Typography>
+          </Box>
+          <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            <AttachFileOutlinedIcon />
+            <Typography variant="body2" color="text.secondary">
+              <a href={githubLink} target="_blank" rel="noreferrer">
+                {githubLink}
+              </a>
+            </Typography>
+          </Box>
+        </CardContent>
 
-      <CardActions>
-        <Button size="small">More</Button>
-        <Button size="small">Bookmark</Button>
-      </CardActions>
-    </Card>
+        <CardActions>
+          <Button size="small">
+            <Link to={`/user/${loginName}`}>More</Link>
+          </Button>
+          <Button size="small">Bookmark</Button>
+        </CardActions>
+      </Card>
+    </React.Fragment>
   );
 };
 
