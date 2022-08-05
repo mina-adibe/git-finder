@@ -6,12 +6,12 @@ import { PaginationProps } from "../../types/types";
 
 const PaginationComponent = ({ pagesCount, page, handleChangePanination }: PaginationProps) => {
   return (
-    <Box>
+    <React.Fragment>
       <Stack spacing={2} sx={{ display: "flex", alignItems: "center", width: "60%" }}>
         <Typography>Page: {page}</Typography>
         <Pagination count={pagesCount} page={page} onChange={handleChangePanination} />
       </Stack>
-    </Box>
+    </React.Fragment>
   );
 };
 
