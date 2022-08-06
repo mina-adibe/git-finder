@@ -7,13 +7,15 @@ import {
   FormGroup,
   FormControlLabel,
   Switch,
+  Button,
+  Badge,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
-
+import { NavLink } from "react-router-dom";
 import { toggleTheme } from "../../store/themeSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { Link } from "react-router-dom";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -32,18 +34,30 @@ const Header = () => {
             <Box>
               <GitHubIcon />
             </Box>
-            <Typography variant="h6" component="h1">
+
+            <Typography
+              component={NavLink}
+              color="#fff"
+              sx={{
+                flexGrow: 1,
+                fontFamily: "Poppins",
+                textDecoration: "none",
+              }}
+              to="/">
               Git Finder
             </Typography>
-
-            <Link to="/">Home</Link>
-            <Link to="/Bookmarks">Bookmarks users {bookmark.length}</Link>
           </Box>
-          <Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Button color="inherit" component={NavLink} to="/Bookmarks">
+              <Badge badgeContent={bookmark.length} color="success" sx={{ mx: "10px" }}>
+                <BookmarkIcon />
+              </Badge>
+              Bookmarks users
+            </Button>
             <FormGroup>
               <FormControlLabel
+                label="Light/Dark"
                 control={<Switch checked={theme.darkTheme} onChange={handleChange} />}
-                label="Toggle Theme"
               />
             </FormGroup>
           </Box>
