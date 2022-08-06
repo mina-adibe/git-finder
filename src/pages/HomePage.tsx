@@ -1,4 +1,3 @@
-import { Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useGetusersBySearchQuery } from "../api/github";
 import Cards from "../components/cards/Cards";
@@ -40,8 +39,8 @@ const HomePage = () => {
     setPage(value);
   };
 
-  let pagesCount = data && data.total_count && Math.ceil(data.total_count / searchTerm.per_page);
-
+  const pagesCount = data && data.total_count && Math.ceil(data.total_count / searchTerm.per_page);
+  const isData = !!data;
   return (
     <React.Fragment>
       {/* Search  Component */}
@@ -51,11 +50,10 @@ const HomePage = () => {
         pagesCount={pagesCount}
         page={page}
         handleChangePanination={handleChangePanination}
+        isData={isData}
       />
       {/* cards component  */}
-      <Paper sx={{ mx: "auto", width: "60%", my: "40px", p: "15px" }}>
-        <Cards isFetching={isFetching} isError={isError} data={data} />
-      </Paper>
+      <Cards isFetching={isFetching} isError={isError} data={data} />
     </React.Fragment>
   );
 };
