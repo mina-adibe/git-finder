@@ -95,3 +95,8 @@ export interface PaginationProps {
 export interface ThemeState {
   darkTheme: boolean;
 }
+
+export interface HeadProps {
+  title: string;
+  description: string;
+}
