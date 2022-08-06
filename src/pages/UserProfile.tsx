@@ -3,11 +3,10 @@ import { Typography } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetuserProfileQuery } from "../api/github";
+import Head from "../helpers/Head";
 
 const UserProfile = () => {
   const { username } = useParams();
-
-  // TODO : PAGE RENDER 5 TIMES
 
   const { isFetching, isError, data, refetch } = useGetuserProfileQuery(username, {
     skip: username ? false : true,
@@ -28,6 +27,8 @@ const UserProfile = () => {
 
   return (
     <React.Fragment>
+      <Head title={`${name} user profile.`} description="your favourit users from search" />
+
       <Typography>bio :{bio}</Typography>
       <Typography>blog :{blog}</Typography>
       <Typography>company :{company}</Typography>

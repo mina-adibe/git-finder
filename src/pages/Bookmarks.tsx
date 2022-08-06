@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import UserCard from "../components/userCard/UserCard";
+import Head from "../helpers/Head";
 import { useAppSelector } from "../hooks/useAppSelector";
 
 const Bookmarks = () => {
@@ -11,6 +12,7 @@ const Bookmarks = () => {
 
   return (
     <React.Fragment>
+      <Head title="Users Bookmarks " description="your favourit users from search" />
       <Box
         sx={{
           width: "80vw",

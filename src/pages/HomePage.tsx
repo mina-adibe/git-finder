@@ -3,6 +3,7 @@ import { useGetusersBySearchQuery } from "../api/github";
 import Cards from "../components/cards/Cards";
 import PaginationComponent from "../components/pagination/PaginationComponent";
 import Search from "../components/search/Search";
+import Head from "../helpers/Head";
 import useDebounce from "../hooks/useDebounce";
 import { searchParams } from "../types/types";
 
@@ -43,6 +44,8 @@ const HomePage = () => {
   const isData = !!data;
   return (
     <React.Fragment>
+      <Head title="Hithub finder" description="With github finder you find users data and repos " />
+
       {/* Search  Component */}
       <Search handleChange={handleChange} searchTerm={searchTerm} />
       {/* Pagination Component */}
