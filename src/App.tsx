@@ -11,6 +11,7 @@ import UserProfile from "./pages/UserProfile";
 import { ThemeProvider } from "@mui/material/styles";
 import { darkTheme, lightTheme } from "./theme/Theme";
 import { useAppSelector } from "./hooks/useAppSelector";
+import Bookmarks from "./pages/Bookmarks";
 
 function App() {
   // get theme from store
@@ -23,6 +24,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/Bookmarks" element={<Bookmarks />} />
             <Route path="/user/:username" element={<UserProfile />} />
             <Route path="*" element={<Page404 />} />
           </Routes>

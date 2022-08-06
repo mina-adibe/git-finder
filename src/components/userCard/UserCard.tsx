@@ -12,9 +12,15 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { UserCartProps } from "../../types/types";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import { Box, CardActionArea } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { BookmarkUser } from "../../store/bookmarkSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
-const UserCard = ({ user }: UserCartProps) => {
+const UserCard = ({ user, isBookmarkPage }: UserCartProps) => {
+  const dispatch = useAppDispatch();
+  const bookmark = useAppSelector((state) => state.bookmark);
+
   const {
     id,
     login,
@@ -28,7 +34,6 @@ const UserCard = ({ user }: UserCartProps) => {
     subscriptions_url,
     url,
   } = user;
-  //console.log("html_url", user.url);
   const loginName = user.login;
   const followers = user.followers_url?.length;
   const following = user.following_url?.length;
@@ -36,6 +41,7 @@ const UserCard = ({ user }: UserCartProps) => {
   const reposCount = user.repos_url?.length;
   const repos = user.repos_url;
 
+  console.log("bookmark", bookmark);
   return (
     <React.Fragment>
       <Card sx={{ maxWidth: 345 }}>
@@ -76,7 +82,11 @@ const UserCard = ({ user }: UserCartProps) => {
           <Button size="small">
             <Link to={`/user/${loginName}`}>More</Link>
           </Button>
-          <Button size="small">Bookmark</Button>
+          {!isBookmarkPage && (
+            <Button size="small" onClick={() => dispatch(BookmarkUser(user))}>
+              Bookmark
+            </Button>
+          )}
         </CardActions>
       </Card>
     </React.Fragment>

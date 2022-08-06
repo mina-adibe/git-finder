@@ -70,6 +70,7 @@ export interface searchParams {
 
 export interface UserCartProps {
   user: Users;
+  isBookmarkPage?: boolean;
 }
 
 export interface CardsProps {
@@ -88,6 +89,7 @@ export interface PaginationProps {
   pagesCount: number | undefined;
   page: number | undefined;
   handleChangePanination: any;
+  isData: boolean;
 }
 
 export interface ThemeState {

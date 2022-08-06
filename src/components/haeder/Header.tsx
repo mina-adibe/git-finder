@@ -13,10 +13,12 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { toggleTheme } from "../../store/themeSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const theme = useAppSelector((state) => state.theme);
+  const bookmark = useAppSelector((state) => state.bookmark);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(toggleTheme());
@@ -33,6 +35,9 @@ const Header = () => {
             <Typography variant="h6" component="h1">
               Git Finder
             </Typography>
+
+            <Link to="/">Home</Link>
+            <Link to="/Bookmarks">Bookmarks users {bookmark.length}</Link>
           </Box>
           <Box>
             <FormGroup>
