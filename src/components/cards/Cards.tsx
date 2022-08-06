@@ -6,7 +6,7 @@ import UserCard from "../userCard/UserCard";
 import { CardsProps } from "../../types/types";
 
 const Cards = (props: CardsProps) => {
-  const { isFetching, isError, data } = props;
+  const { isFetching, isError, data, isSearchEmpty } = props;
 
   if (isFetching) {
     return <Loader />;
@@ -20,7 +20,7 @@ const Cards = (props: CardsProps) => {
         my: "40px",
         p: "15px",
       }}>
-      {!data && (
+      {(!data || isSearchEmpty) && (
         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img src="/assets/Home-img.svg" alt="React Logo" />
         </Box>
@@ -28,6 +28,7 @@ const Cards = (props: CardsProps) => {
       <Container>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {data &&
+            !isSearchEmpty &&
             data.items.map((user) => {
               return (
                 <Grid item xs={12} sm={6} md={4} key={user.id}>

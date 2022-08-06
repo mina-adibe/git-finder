@@ -77,6 +77,7 @@ export interface CardsProps {
   isFetching: boolean;
   isError: boolean;
   data: ServerResponse<Users> | undefined;
+  isSearchEmpty: boolean;
 }
 //TODO : inhance this
 export interface SearchProps {
@@ -90,6 +91,7 @@ export interface PaginationProps {
   page: number | undefined;
   handleChangePanination: any;
   isData: boolean;
+  isSearchEmpty: boolean;
 }
 
 export interface ThemeState {

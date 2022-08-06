@@ -14,7 +14,7 @@ const HomePage = () => {
     search: "",
     sort: "followers",
   });
-  const debouncedText = useDebounce(searchTerm.search, 2000);
+  const debouncedText = useDebounce(searchTerm.search, 500);
   const [page, setPage] = React.useState(1);
 
   const { isFetching, isError, data } = useGetusersBySearchQuery(
@@ -27,10 +27,6 @@ const HomePage = () => {
     { skip: debouncedText === "" ? true : false || debouncedText[0] === "" }
   );
 
-  useEffect(() => {
-    console.log("dataaaaa", data);
-  }, [data]);
-
   const handleChange = (event: any) => {
     setsearchTerm({ ...searchTerm, [event.target.name]: [event.target.value] });
   };
@@ -42,6 +38,8 @@ const HomePage = () => {
 
   const pagesCount = data && data.total_count && Math.ceil(data.total_count / searchTerm.per_page);
   const isData = !!data;
+  const isSearchEmpty = !debouncedText[0];
+
   return (
     <React.Fragment>
       <Head title="Hithub finder" description="With github finder you find users data and repos " />
@@ -54,15 +52,17 @@ const HomePage = () => {
         page={page}
         handleChangePanination={handleChangePanination}
         isData={isData}
+        isSearchEmpty={isSearchEmpty}
       />
       {/* cards component  */}
-      <Cards isFetching={isFetching} isError={isError} data={data} />
+      <Cards isFetching={isFetching} isError={isError} data={data} isSearchEmpty={isSearchEmpty} />
       {/* Pagination Component */}
       <PaginationComponent
         pagesCount={pagesCount}
         page={page}
         handleChangePanination={handleChangePanination}
         isData={isData}
+        isSearchEmpty={isSearchEmpty}
       />
     </React.Fragment>
   );

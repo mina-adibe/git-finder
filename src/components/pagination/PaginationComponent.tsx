@@ -8,10 +8,11 @@ const PaginationComponent = ({
   page,
   handleChangePanination,
   isData,
+  isSearchEmpty,
 }: PaginationProps) => {
   return (
     <React.Fragment>
-      {isData && (
+      {isData && !isSearchEmpty && (
         <Stack spacing={2} sx={{ display: "flex", alignItems: "center" }}>
           <Typography>Page: {page}</Typography>
           <Pagination count={pagesCount} page={page} onChange={handleChangePanination} />
