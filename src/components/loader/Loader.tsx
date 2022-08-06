@@ -1,12 +1,12 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Box } from "@mui/material";
 
 const Loader = () => {
   return (
-    <Stack sx={{ color: "grey.500" }} spacing={2} direction="row">
+    <Box sx={{ display: "flex", alignItems: "center" }}>
       <CircularProgress color="inherit" />
-    </Stack>
+    </Box>
   );
 };
 

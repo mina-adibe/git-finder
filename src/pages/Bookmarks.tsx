@@ -6,13 +6,8 @@ import { useAppSelector } from "../hooks/useAppSelector";
 
 const Bookmarks = () => {
   const bookmarksUsers = useAppSelector((state) => state.bookmark);
-  console.log("bookmarksUsers", bookmarksUsers);
-
   const { pathname } = useLocation();
-  console.log(pathname);
-
   const isBookmarkPage = pathname === "/Bookmarks" ? true : false;
-  console.log("isBookmarkPage", isBookmarkPage);
 
   return (
     <React.Fragment>

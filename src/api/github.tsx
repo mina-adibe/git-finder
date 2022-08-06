@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Users, ServerResponse, searchParams } from "../types/types";
+import { Users, ServerResponse, searchParams, UserProfile } from "../types/types";
 
 export const githubApi = createApi({
   reducerPath: "githubApi",
@@ -16,12 +16,16 @@ export const githubApi = createApi({
         },
       }),
       transformResponse: (response: ServerResponse<Users>) => {
-        console.log("response", response.items);
         return { items: response.items, total_count: response.total_count };
       },
     }),
+    getuserProfile: builder.query<UserProfile, string | undefined>({
+      query: (username: string) => ({
+        url: `users/${username}`,
+      }),
+    }),
   }),
 });
-export const { useGetusersBySearchQuery } = githubApi;
+export const { useGetusersBySearchQuery, useGetuserProfileQuery } = githubApi;
 // result type : Array<Users> (array of users )
 // query args : string

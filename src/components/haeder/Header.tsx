@@ -13,7 +13,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { toggleTheme } from "../../store/themeSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { useAppSelector } from "../../hooks/useAppSelector";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useAppDispatch();

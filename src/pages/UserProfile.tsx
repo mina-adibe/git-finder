@@ -1,13 +1,12 @@
-import { TabsContext } from "@mui/base";
 import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useGetuserProfileQuery } from "../api/github";
 
 const UserProfile = () => {
   const { username } = useParams();
-  //console.log("username", username);
+
   // TODO : PAGE RENDER 5 TIMES
 
   const { isFetching, isError, data, refetch } = useGetuserProfileQuery(username, {
@@ -26,8 +25,6 @@ const UserProfile = () => {
   const publicRepos = data?.public_repos;
   const twitter = data?.twitter_username;
   const url = data?.html_url;
-
-  console.log("data-user", data);
 
   return (
     <React.Fragment>

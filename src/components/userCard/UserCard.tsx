@@ -12,36 +12,20 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import { UserCartProps } from "../../types/types";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import { Box, CardActionArea } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BookmarkUser } from "../../store/bookmarkSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
-import { useAppSelector } from "../../hooks/useAppSelector";
 
 const UserCard = ({ user, isBookmarkPage }: UserCartProps) => {
   const dispatch = useAppDispatch();
-  const bookmark = useAppSelector((state) => state.bookmark);
 
-  const {
-    id,
-    login,
-    organizations_url,
-    avatar_url,
-    followers_url,
-    following_url,
-    html_url,
-    repos_url,
-    starred_url,
-    subscriptions_url,
-    url,
-  } = user;
+  const { avatar_url } = user;
   const loginName = user.login;
   const followers = user.followers_url?.length;
   const following = user.following_url?.length;
   const githubLink = user.html_url;
   const reposCount = user.repos_url?.length;
-  const repos = user.repos_url;
 
-  console.log("bookmark", bookmark);
   return (
     <React.Fragment>
       <Card sx={{ maxWidth: 345 }}>
