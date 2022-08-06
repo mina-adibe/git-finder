@@ -69,7 +69,7 @@ const UserCard = ({ user, isBookmarkPage }: UserCartProps) => {
           </Box>
         </CardContent>
 
-        <CardActions>
+        <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
           <Button size="small" component={RRLink} to={`/user/${loginName}`}>
             <UnfoldMoreIcon />
             More

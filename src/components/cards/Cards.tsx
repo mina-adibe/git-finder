@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import React from "react";
 import Loader from "../loader/Loader";
 import UserCard from "../userCard/UserCard";
@@ -15,21 +15,17 @@ const Cards = (props: CardsProps) => {
     return <h1>Error...</h1>;
   }
   return (
-    <React.Fragment>
-      <Box
-        sx={{
-          width: "80vw",
-          mx: "auto",
-          display: "flex",
-          alignItems: "center",
-          my: "40px",
-          p: "15px",
-        }}>
-        {!data && (
-          <Box>
-            <img src="/assets/Home-img.svg" alt="React Logo" />
-          </Box>
-        )}
+    <Container
+      sx={{
+        my: "40px",
+        p: "15px",
+      }}>
+      {!data && (
+        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src="/assets/Home-img.svg" alt="React Logo" />
+        </Box>
+      )}
+      <Container>
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {data &&
             data.items.map((user) => {
@@ -40,8 +36,8 @@ const Cards = (props: CardsProps) => {
               );
             })}
         </Grid>
-      </Box>
-    </React.Fragment>
+      </Container>
+    </Container>
   );
 };
 

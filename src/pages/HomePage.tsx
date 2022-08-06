@@ -57,6 +57,13 @@ const HomePage = () => {
       />
       {/* cards component  */}
       <Cards isFetching={isFetching} isError={isError} data={data} />
+      {/* Pagination Component */}
+      <PaginationComponent
+        pagesCount={pagesCount}
+        page={page}
+        handleChangePanination={handleChangePanination}
+        isData={isData}
+      />
     </React.Fragment>
   );
 };
