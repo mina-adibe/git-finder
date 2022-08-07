@@ -1,4 +1,4 @@
-# Githup Finder app
+# Github Finder app
 
 ## Idea of the App
 
