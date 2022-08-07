@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useLocation } from "react-router-dom";
 import UserCard from "../components/userCard/UserCard";
@@ -10,9 +10,27 @@ const Bookmarks = () => {
   const { pathname } = useLocation();
   const isBookmarkPage = pathname === "/Bookmarks" ? true : false;
 
+  console.log("bookmarksUsers", bookmarksUsers);
   return (
     <React.Fragment>
       <Head title="Users Bookmarks " description="your favourit users from search" />
+      <Typography align="center" variant="h3" component="h1">
+        Users Bookmarks
+      </Typography>
+      {bookmarksUsers.length === 0 && (
+        <Box
+          sx={{
+            display: "flex ",
+            height: "70vh",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "red",
+          }}>
+          <Typography align="center" variant="h5" component="h5">
+            There is no bookmarks Users{" "}
+          </Typography>
+        </Box>
+      )}
       <Box
         sx={{
           width: "80vw",
@@ -22,11 +40,6 @@ const Bookmarks = () => {
           my: "40px",
           p: "15px",
         }}>
-        {!bookmarksUsers && (
-          <Box>
-            <img src="/assets/Home-img.svg" alt="React Logo" loading="lazy" />
-          </Box>
-        )}
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {bookmarksUsers &&
             bookmarksUsers.map((user) => {
