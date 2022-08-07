@@ -27,7 +27,7 @@ const HomePage = () => {
     { skip: debouncedText === "" ? true : false || debouncedText[0] === "" }
   );
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setsearchTerm({ ...searchTerm, [event.target.name]: [event.target.value] });
   };
   // pagination

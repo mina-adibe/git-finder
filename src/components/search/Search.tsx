@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
 import { Box } from "@mui/system";
 import { Container, IconButton, InputBase, InputLabel, Paper } from "@mui/material";

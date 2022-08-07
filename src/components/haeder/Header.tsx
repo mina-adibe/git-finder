@@ -22,7 +22,7 @@ const Header = () => {
   const theme = useAppSelector((state) => state.theme);
   const bookmark = useAppSelector((state) => state.bookmark);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = () => {
     dispatch(toggleTheme());
   };
 

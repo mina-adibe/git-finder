@@ -1,3 +1,4 @@
+import React from "react";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import CssBaseline from "@mui/material/CssBaseline";
 import Layout from "./components/layout/Layout";
@@ -13,14 +14,16 @@ function App() {
   const theme = useAppSelector((state) => state.theme);
 
   return (
-    <ErrorBoundary>
-      <ThemeProvider theme={theme.darkTheme ? darkTheme : lightTheme}>
-        <CssBaseline />
-        <Layout>
-          <RoutesComponent />
-        </Layout>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <React.Fragment>
+      <ErrorBoundary>
+        <ThemeProvider theme={theme.darkTheme ? darkTheme : lightTheme}>
+          <CssBaseline />
+          <Layout>
+            <RoutesComponent />
+          </Layout>
+        </ThemeProvider>
+      </ErrorBoundary>
+    </React.Fragment>
   );
 }
 

@@ -79,13 +79,13 @@ export interface CardsProps {
   data: ServerResponse<Users> | undefined;
   isSearchEmpty: boolean;
 }
-//TODO : inhance this
+//TODO : enhance this
 export interface SearchProps {
   handleChange: (event: any) => any;
   searchTerm: searchParams;
 }
 
-//TODO : inhance this
+//TODO : enhance this
 export interface PaginationProps {
   pagesCount: number | undefined;
   page: number | undefined;
