@@ -34,7 +34,13 @@ const UserCard = ({ user, isBookmarkPage }: UserCartProps) => {
     <React.Fragment>
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
-          <CardMedia component="img" alt="green iguana" height="150" image={avatar_url} />
+          <CardMedia
+            component="img"
+            alt="green iguana"
+            height="150"
+            image={avatar_url}
+            loading="lazy"
+          />
         </CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

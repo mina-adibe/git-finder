@@ -24,7 +24,7 @@ const Bookmarks = () => {
         }}>
         {!bookmarksUsers && (
           <Box>
-            <img src="/assets/Home-img.svg" alt="React Logo" />
+            <img src="/assets/Home-img.svg" alt="React Logo" loading="lazy" />
           </Box>
         )}
         <Grid container spacing={{ xs: 2, md: 3 }}>

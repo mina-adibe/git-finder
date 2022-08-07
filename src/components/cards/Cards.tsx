@@ -22,7 +22,7 @@ const Cards = (props: CardsProps) => {
       }}>
       {(!data || isSearchEmpty) && (
         <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <img src="/assets/Home-img.svg" alt="React Logo" />
+          <img src="/assets/Home-img.svg" alt="React Logo" loading="lazy" />
         </Box>
       )}
       <Container>
