@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useGetusersBySearchQuery } from "../api/github";
 import Cards from "../components/cards/Cards";
 import PaginationComponent from "../components/pagination/PaginationComponent";

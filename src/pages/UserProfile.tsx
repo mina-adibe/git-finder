@@ -1,14 +1,14 @@
-import { Typography } from "@mui/material";
-
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetuserProfileQuery } from "../api/github";
-import Head from "../helpers/Head";
 
+import Head from "../helpers/Head";
+import { Container, Typography, Box, Button, Link, Grid } from "@mui/material";
+import { useGetuserProfileQuery } from "../api/github";
+import Loader from "../components/loader/Loader";
 const UserProfile = () => {
   const { username } = useParams();
 
-  const { isFetching, isError, data, refetch } = useGetuserProfileQuery(username, {
+  const { isFetching, isError, data } = useGetuserProfileQuery(username, {
     skip: username ? false : true,
   });
   const avatar = data?.avatar_url;
@@ -25,43 +25,75 @@ const UserProfile = () => {
   const twitter = data?.twitter_username;
   const url = data?.html_url;
 
+  if (isFetching) {
+    return <Loader />;
+  }
+  if (isError) {
+    return <h1>Error...</h1>;
+  }
+
   return (
     <React.Fragment>
       <Head title={`${name} user profile.`} description="your favourit users from search" />
 
-      <Typography>bio :{bio}</Typography>
-      <Typography>blog :{blog}</Typography>
-      <Typography>company :{company}</Typography>
-      <Typography>email :{email}</Typography>
-      <Typography>followers :{followers}</Typography>
-      <Typography>following :{following}</Typography>
-      <Typography>hireable :{hireable}</Typography>
-      <Typography>location :{location}</Typography>
-      <Typography>publicRepos :{publicRepos}</Typography>
-      <Typography>name :{name}</Typography>
-      <Typography>twitter :{twitter}</Typography>
-      <Typography>url :{url}</Typography>
+      <Container>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <Box>
+              <Box
+                component="img"
+                sx={{ borderRadius: "50%" }}
+                src={`${avatar}`}
+                alt={data?.login}
+                loading="lazy"
+                width="400px"
+                height="400px"
+              />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "30px",
+                alignItems: "flex-start",
+              }}>
+              <Typography variant="h3" component="h1">
+                Name :{name}
+              </Typography>
+              <Typography
+                align="center"
+                sx={{
+                  pt: "10px",
+                }}>
+                Bio: {bio}
+              </Typography>
+
+              <Typography>blog :{blog}</Typography>
+              <Typography>company :{company}</Typography>
+              <Typography>email :{email}</Typography>
+              <Typography>hireable :{hireable}</Typography>
+              <Typography>location :{location}</Typography>
+              <Typography>publicRepos :{publicRepos}</Typography>
+              <Typography>twitter :{twitter}</Typography>
+              <Typography>
+                url :
+                <Link href={url} underline="none" target="_blank" rel="noreferrer">
+                  {url}
+                </Link>
+              </Typography>
+              <Box sx={{ display: "flex", gap: "15px" }}>
+                <Button variant="contained">Repos {data?.repos_url.length} </Button>
+                <Button variant="contained">followers {followers}</Button>
+                <Button variant="contained">following {following}</Button>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
     </React.Fragment>
   );
 };
 
 export default UserProfile;
-
-// created_at: "2015-09-16T00:37:51Z";
-// events_url: "https://api.github.com/users/lucaslattari/events{/privacy}";
-
-// followers_url: "https://api.github.com/users/lucaslattari/followers";
-// following_url: "https://api.github.com/users/lucaslattari/following{/other_user}";
-
-// gists_url: "https://api.github.com/users/lucaslattari/gists{/gist_id}";
-
-// html_url: "https://github.com/lucaslattari";
-// id: 14303710;
-
-// organizations_url: "https://api.github.com/users/lucaslattari/orgs";
-
-// received_events_url: "https://api.github.com/users/lucaslattari/received_events";
-// repos_url: "https://api.github.com/users/lucaslattari/repos";
-
-// starred_url: "https://api.github.com/users/lucaslattari/starred{/owner}{/repo}";
-// subscriptions_url: "https://api.github.com/users/lucaslattari/subscriptions";
