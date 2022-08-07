@@ -1,11 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { githubApi } from "../api/github";
-import usersReducers from "./usersSlice";
 import themeReducer from "./themeSlice";
 import bookmarkSlice from "./bookmarkSlice";
 export const store = configureStore({
   reducer: {
-    users: usersReducers,
     [githubApi.reducerPath]: githubApi.reducer,
     theme: themeReducer,
     bookmark: bookmarkSlice,

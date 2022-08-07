@@ -36,19 +36,6 @@ const Search = ({ handleChange, searchTerm }: SearchProps) => {
               name="search"
               inputProps={{ "aria-label": "Search github users" }}
             />
-            <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                value={searchTerm.page}
-                name="page"
-                onChange={handleChange}
-                displayEmpty
-                inputProps={{ "aria-label": "Without label" }}>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
-            </FormControl>
-            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
 
             <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
               <InputLabel id="per-page-label">per page</InputLabel>
